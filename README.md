@@ -1,6 +1,8 @@
+**VetWise – OCR-Powered Veterinary Record Automation**
+
 VetWise is a Chrome Extension and Flask web app that automates the transcription of veterinary medical records using Google Cloud Vision OCR. Designed for clinics and animal shelters, VetWise simplifies the process of recording patient data, reducing manual entry time by up to 40%.
 
-**Features**
+##**Features**
 
 OCR Automation: Extracts key patient and treatment data from scanned veterinary forms.
 
