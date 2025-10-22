@@ -2,15 +2,17 @@ VetWise is a Chrome Extension and Flask web app that automates the transcription
 
 **Features**
 
-  OCR Automation: Extracts key patient and treatment data from scanned veterinary forms.
-  
-  Web Dashboard: Displays parsed records for quick review, correction, and export.
-  
-  Cloud Integration: Uses Google Cloud Vision API for high-accuracy text recognition.
-  
-  Workflow Efficiency: Automatically formats and structures extracted data into record fields.
-  
-  User Research Driven: Built with input from Michigan Humane’s Director of Veterinary Medicine to align with real clinical workflows.
+OCR Automation: Extracts key patient and treatment data from scanned veterinary forms.
+
+Web Dashboard: Displays parsed records for quick review, correction, and export.
+
+Cloud Integration: Uses Google Cloud Vision API for high-accuracy text recognition.
+
+Workflow Efficiency: Automatically formats and structures extracted data into record fields.
+
+User Research Driven: Built with input from Michigan Humane’s Director of Veterinary Medicine to align with real clinical workflows.
+
+
 
 **Tech Stack**
 
@@ -18,25 +20,29 @@ VetWise is a Chrome Extension and Flask web app that automates the transcription
   Backend: Flask (Python), Google Cloud Vision API, RESTful API communication
   Data: JSON-based record transfer, local and cloud storage options
 
+
+
 **Project Architecture**
 
-  vetwise/
-  │
-  ├── extension/
-  │ ├── popup.html
-  │ ├── popup.js
-  │ ├── manifest.json
-  │ └── styles.css
-  │
-  ├── server/
-  │ ├── app.py
-  │ ├── templates/
-  │ └── static/
-  │
-  ├── assets/
-  │ └── sample_records/
-  │
-  └── README.md
+		  vetwise/ 
+		  │
+		  ├── extension/
+		  │ ├── popup.html
+		  │ ├── popup.js
+		  │ ├── manifest.json
+		  │ └── styles.css
+		  │
+		  ├── server/
+		  │ ├── app.py
+		  │ ├── templates/
+		  │ └── static/
+		  │
+		  ├── assets/
+		  │ └── sample_records/
+		  │
+		  └── README.md
+
+
 
 **Setup Instructions**
 
@@ -63,6 +69,8 @@ VetWise is a Chrome Extension and Flask web app that automates the transcription
   
   Select the /extension directory
 
+
+
 **Usage**
 
   Upload a scanned record or image through the Chrome Extension popup.
@@ -73,6 +81,8 @@ VetWise is a Chrome Extension and Flask web app that automates the transcription
   
   Export or store the cleaned data in clinic systems.
 
+
+
 **Impact**
 
   Reduced average record-entry time by 40% per case.
@@ -80,6 +90,8 @@ VetWise is a Chrome Extension and Flask web app that automates the transcription
   Increased data accuracy and standardization.
   
   Empowered veterinary teams to focus on care instead of paperwork.
+
+
 
 **Contributors**
 
