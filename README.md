@@ -1,101 +1,27 @@
-**VetWise – OCR-Powered Veterinary Record Automation**
+# VetWise — Veterinary Record OCR and Autofill
 
-VetWise is a Chrome Extension and Flask web app that automates the transcription of veterinary medical records using Google Cloud Vision OCR. Designed for clinics and animal shelters, VetWise simplifies the process of recording patient data, reducing manual entry time by up to 40%.
+VetWise is a Chrome extension and Flask service prototype designed to reduce repetitive transcription of veterinary patient records. It explores extracting text from uploaded forms and populating matching fields in a web-based patient record system.
 
-##**Features**
+## Why I built it
+My experience in veterinary medicine exposed how much time staff spend reading handwritten notes and re-entering patient information. VetWise explores automating that first pass while leaving clinical review to the user.
 
-OCR Automation: Extracts key patient and treatment data from scanned veterinary forms.
+## How it works
+1. Select a PDF, PNG, or JPEG in the Chrome extension popup.
+2. The popup uploads the file to a Flask processing service.
+3. The service extracts embedded PDF text using PyMuPDF or image text using Google Cloud Vision document text detection.
+4. The extension parses labeled output and attempts to autofill matching page elements (patient ID, species, breed, microchip, owner details, diagnosis, treatment, and more).
 
-Web Dashboard: Displays parsed records for quick review, correction, and export.
+## Tech stack
+- Chrome Manifest V3, JavaScript, HTML, Chrome scripting/tabs APIs
+- Python, Flask, Flask-CORS
+- PyMuPDF and Google Cloud Vision API
+- Multipart file upload, JSON response, browser DOM manipulation
 
-Cloud Integration: Uses Google Cloud Vision API for high-accuracy text recognition.
+## Repository structure
+All implementation files are under `VW Autofill Chrome Extension/`: `manifest.json`, `popup.html`, `popup.js`, `background.js`, `content.js`, and `server.py`.
 
-Workflow Efficiency: Automatically formats and structures extracted data into record fields.
+## Local development
+Install `flask`, `flask-cors`, `pymupdf`, and `google-cloud-vision`; configure Google application credentials for OCR; and start `server.py`. Load the `VW Autofill Chrome Extension` folder as an unpacked extension from `chrome://extensions` (Developer mode). Update the hard-coded popup API URL, Flask route, and extension host permissions to match your environment before testing with synthetic records.
 
-User Research Driven: Built with input from Michigan Humane’s Director of Veterinary Medicine to align with real clinical workflows.
-
-
-
-**Tech Stack**
-
-  Frontend: Chrome Extensions API, HTML, CSS, JavaScript
-  Backend: Flask (Python), Google Cloud Vision API, RESTful API communication
-  Data: JSON-based record transfer, local and cloud storage options
-
-
-
-**Project Architecture**
-
-		  vetwise/ 
-		  │
-		  ├── extension/
-		  │ ├── popup.html
-		  │ ├── popup.js
-		  │ ├── manifest.json
-		  │ └── styles.css
-		  │
-		  ├── server/
-		  │ ├── app.py
-		  │ ├── templates/
-		  │ └── static/
-		  │
-		  ├── assets/
-		  │ └── sample_records/
-		  │
-		  └── README.md
-
-
-
-**Setup Instructions**
-
-  Clone the repository
-  git clone https://github.com/<your-username>/vetwise.git
-  cd vetwise
-  
-  Set up the Flask server
-  cd server
-  pip install -r requirements.txt
-  python app.py
-  
-  Add Google Cloud Vision credentials
-  Create a Google Cloud Vision API key and store it in an .env file:
-  GOOGLE_APPLICATION_CREDENTIALS=path/to/your-key.json
-  
-  Load the Chrome Extension
-  
-  Go to chrome://extensions
-  
-  Enable Developer Mode
-  
-  Click “Load Unpacked”
-  
-  Select the /extension directory
-
-
-
-**Usage**
-
-  Upload a scanned record or image through the Chrome Extension popup.
-  
-  VetWise automatically processes the document using OCR.
-  
-  The extracted data appears in the Flask web dashboard for review.
-  
-  Export or store the cleaned data in clinic systems.
-
-
-
-**Impact**
-
-  Reduced average record-entry time by 40% per case.
-  
-  Increased data accuracy and standardization.
-  
-  Empowered veterinary teams to focus on care instead of paperwork.
-
-
-
-**Contributors**
-
-Danny Jakubowski – Founder & Lead Developer
-Special thanks to Michigan Humane for research collaboration and workflow testing.
+## Current limitations
+This is a proof of concept, not a production clinical system. The extension's request URL and route do not currently match the Flask `/run-script` route. The PDF path extracts embedded text rather than OCRing scanned PDFs. Autofill depends on exact element IDs and consistent text labels, so all output must be reviewed. Do not send real patient/client records to an unreviewed service. Time-saving claims in the previous README have not been independently verified from this repository.
